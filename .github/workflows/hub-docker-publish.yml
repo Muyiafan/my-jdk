@@ -11,7 +11,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: muyiafan/my-jdk
 
 jobs:
   # Run tests.
@@ -51,10 +51,7 @@ jobs:
 
       - name: Push image
         run: |
-          IMAGE_ID=muyiafan/$IMAGE_NAME
-
-          # Change all uppercase to lowercase
-          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+          IMAGE_ID=$IMAGE_NAME
 
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
